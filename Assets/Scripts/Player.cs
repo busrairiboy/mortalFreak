@@ -2,15 +2,26 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+[RequireComponent(typeof(Rigidbody2D))]
 public class Player : MonoBehaviour
 {
+    [SerializeField] private float speed;
+    [SerializeField] private FixedJoystick joystick;
+    private Vector2 input;
+    private Rigidbody2D rb;
+
     private Vector3 Horizontal;
     private Vector3 Vertical;
     private Equipment equipment;
     private PlayerStats Stats;
     private PlayerAttack playerAttack;
     private Health health;
-   
+
+    private void Awake()
+    {
+        rb = GetComponent<Rigidbody2D>();
+    }
+
     void Start()
     {
         health = GetComponent<Health>();
@@ -19,55 +30,18 @@ public class Player : MonoBehaviour
         playerAttack = GetComponent<PlayerAttack>();
 
         health._health = 60;
-
-      
-
     }
 
-    
     void Update()
     {
-        Stats.Armor= 5.0f;
-        
-        if(Input.GetKey(KeyCode.A)) {
-            Horizontal = new Vector3(-1, 0, 0);
-        }
-        if (Input.GetKey(KeyCode.D))
-        {
-            Horizontal = new Vector3(1, 0, 0);
-        }
-        if (Input.GetKey(KeyCode.S))
-        {
-            Vertical = new Vector3(0, -1, 0);
-        }
-        if (Input.GetKey(KeyCode.W))
-        {
-            Vertical = new Vector3(0, 1, 0);
-        }
-        if (!Input.GetKey(KeyCode.A) && !Input.GetKey(KeyCode.D))
-        {
-           
-            Horizontal= Vector3.zero;   
-        }
-        if (!Input.GetKey(KeyCode.S) && !Input.GetKey(KeyCode.W)) 
-        {
-            Vertical = Vector3.zero;
-
-        }
-            Move.Instance.move(this.gameObject,(Horizontal+Vertical),Stats.Speed);
-        
-        if (Input.GetMouseButtonDown(0)) {
-            
-            playerAttack.Attack();
-        }
-
+        Stats.Armor = 5.0f;
+        input.x = joystick.Horizontal;
+        input.y = joystick.Vertical;
+        Debug.Log($"Joystick Values - Horizontal: {input.x}, Vertical: {input.y}");
     }
 
-
-    void BeyiniCagir()
+    private void FixedUpdate()
     {
-        //IBrain.Instance.CallAttack(equipment.PlayerDamage());
-
+        rb.MovePosition(rb.position + input * speed * Time.fixedDeltaTime);
     }
-
 }
