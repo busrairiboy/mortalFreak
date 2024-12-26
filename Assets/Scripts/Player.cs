@@ -1,29 +1,25 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting.Antlr3.Runtime.Misc;
 using UnityEngine;
 
 [RequireComponent(typeof(Rigidbody2D))]
 public class Player : MonoBehaviour
 {
-    [SerializeField] private float speed;
-    [SerializeField] private FixedJoystick joystick;
+  
+    public FixedJoystick joystick;
+    
     private Vector2 input;
-    private Rigidbody2D rb;
 
-    private Vector3 Horizontal;
-    private Vector3 Vertical;
+    private Rigidbody2D rb;
     private Equipment equipment;
     private PlayerStats Stats;
     private PlayerAttack playerAttack;
     private Health health;
 
-    private void Awake()
-    {
-        rb = GetComponent<Rigidbody2D>();
-    }
-
     void Start()
     {
+        rb = GetComponent<Rigidbody2D>();
         health = GetComponent<Health>();
         equipment = GetComponent<Equipment>();
         Stats = GetComponent<PlayerStats>();
@@ -42,6 +38,6 @@ public class Player : MonoBehaviour
 
     private void FixedUpdate()
     {
-        rb.MovePosition(rb.position + input * speed * Time.fixedDeltaTime);
+        rb.velocity = input * Stats.Speed;
     }
 }

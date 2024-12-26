@@ -14,10 +14,13 @@ public class Enemy : MonoBehaviour
     Health health;
     EnemyAttack attack;
 
+    public Vector2 HiveLocation;
+    public Vector2 AttackLocation;
     public Vector2 TargetLocation;
 
     public bool hasTarget;
     public bool isMoving;
+    public int priority = 0;
     void Start()
     {
         attack = GetComponent<EnemyAttack>();
@@ -33,26 +36,11 @@ public class Enemy : MonoBehaviour
  
     void Update()
     {
+     
         
-       
-        if (EnemyGang.isPlayerIn)
-        {
-            TargetLocation = EnemyGang.PlayerPosition;
-            if (TargetLocation != null) 
-            {
-                whenPlayerClose();
-
-                AttackToPlayer();
-            }
-            else { isMoving = false; }
-            
-        }
-        if(!isMoving) 
-        {
-            MoveInGang();
-        }
-       
-
+            TargetLocation=HiveLocation;
+            moveToTarget();
+           
 
     }
     public void AttackToPlayer()
@@ -62,15 +50,12 @@ public class Enemy : MonoBehaviour
     }
     public void MoveInGang()
     {
-        StartCoroutine(moveEnemy.MoveRandomly(gameObject.GetComponent<Enemy>(),this.gameObject, EnemyGang.transform.position, stats.Speed,EnemyGang.Radius));   
+        //StartCoroutine(moveEnemy.MoveRandomly(gameObject.GetComponent<Enemy>(),this.gameObject, EnemyGang.transform.position, stats.Speed,EnemyGang.Radius));   
     }
-    
-    public void whenPlayerClose()
+   
+    public void moveToTarget() 
     {
-
-        moveEnemy.MoveToTarget(gameObject.GetComponent<Enemy>(),this.gameObject, TargetLocation, stats.Speed);
-           
-        
+        moveEnemy.MoveToTarget(gameObject.GetComponent<Enemy>(), this.gameObject, TargetLocation, stats.Speed);
     }
 
 

@@ -50,7 +50,7 @@ GameObject:
   - component: {fileID: -866202025637819117}
   m_Layer: 3
   m_Name: enemy
-  m_TagString: enemy
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -154,6 +154,7 @@ MonoBehaviour:
     m_Bits: 64
   AttackRange: 0
   AttackDamage: 0
+  isAttacking: 0
 --- !u!58 &2834924137183630058
 CircleCollider2D:
   m_ObjectHideFlags: 0
