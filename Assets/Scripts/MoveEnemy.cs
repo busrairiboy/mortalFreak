@@ -17,7 +17,7 @@ public class MoveEnemy : MonoBehaviour
         else 
         { 
             enemy.isMoving = false;
-            enemy.hasTarget = false;
+            
         }
 
     }

@@ -112,7 +112,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: -2413806693520163455, guid: a86470a33a6bf42c4b3595704624658b, type: 3}
+  m_Sprite: {fileID: 21300000, guid: e98ae67774ded0346adef78e82c36594, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -232,9 +232,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d524d0df406a0af41ab09b2dd7a2a66f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  HiveLocation: {x: 0, y: 0}
+  AttackLocation: {x: 0, y: 0}
   TargetLocation: {x: 0, y: 0}
   hasTarget: 0
   isMoving: 0
+  priority: 1
 --- !u!50 &-866202025637819117
 Rigidbody2D:
   serializedVersion: 4

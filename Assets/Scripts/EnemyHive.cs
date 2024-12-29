@@ -5,25 +5,44 @@ using UnityEngine;
 public class EnemyHive : MonoBehaviour
 {
     public List<GameObject> enemyHive = new List<GameObject>();
-
+    AttackToPlayer attackToPlayer;
     HiveCircles hiveCircles;
-    
+    GameObject enemyGang;
+    EnemyGang Gang;
 
+    public Vector2 PlayerPosition;
     private void Start()
     {
+        enemyGang = gameObject.transform.parent.gameObject;
+        attackToPlayer = GetComponent<AttackToPlayer>();
+        Gang=GetComponent<EnemyGang>();
         hiveCircles=GetComponent<HiveCircles>();
-        CollectEnemiesFromGang(gameObject.transform.parent.gameObject);
-        sortEnemiesByPriority();
-        
+             
     }
 
 
     private void Update()
     {
-        CollectEnemiesFromGang(gameObject.transform.parent.gameObject);
+        PlayerPosition = attackToPlayer.playerPosition;
+
+        CollectEnemiesFromGang();
         sortEnemiesByPriority();
 
         Circles();
+
+        if (attackToPlayer.isPlayerIn)
+        {
+            Gang.isPlayerIn = true;
+            SendPlayerPosition(true);
+        }
+        else if (!attackToPlayer.isPlayerIn) 
+        {
+            Gang.isPlayerIn= false;
+            SendPlayerPosition(false);
+        }
+       
+
+
     }
 
 
@@ -48,9 +67,19 @@ public class EnemyHive : MonoBehaviour
     }
 
 
+    public void SendPlayerPosition(bool setplayerIn) {
+        int count = enemyHive.Count;
 
+        for (int i = 0; i < count; i++) 
+        {
+            enemyHive[i].gameObject.GetComponent<Enemy>().isPlayerIn=setplayerIn;
+            enemyHive[i].gameObject.GetComponent<Enemy>().AttackLocation=PlayerPosition;
+        }
+      
+    
+    }
 
-    public void CollectEnemiesFromGang(GameObject enemyGang)
+    public void CollectEnemiesFromGang()
     {
 
         Transform[] childTransforms =enemyGang.GetComponentsInChildren<Transform>();

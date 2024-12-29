@@ -5,62 +5,40 @@ using UnityEngine;
 
 public class EnemyGang : MonoBehaviour
 {
-    public bool isPlayerIn=false;
-    public Vector2 PlayerPosition;
-    public float Radius;
-    public MoveEnemy moveEnemy;
 
+    public MoveEnemy moveEnemy;
+    public bool isPlayerIn=false;
     public bool isMoving;
     public bool hasTarget;
     public Vector2 TargetLocation;
 
-    private CircleCollider2D Collider;
+    
 
     private void Start()
     {
-        Collider = GetComponent<CircleCollider2D>();
+        
         moveEnemy = GetComponent<MoveEnemy>();
-        Radius = Collider.radius-0.5f;
+        
     }
     
     private void Update()
     {
-        if (!isMoving)
+        if (!isMoving && !isPlayerIn)
         {
             MoveInGang();
         }
-        
-    }
-    
-    
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
-        if (collision.CompareTag("Player"))
+        else if (isPlayerIn) 
         {
-            isPlayerIn = true;
-            
-        }
-       
-        
-    }
-    private void OnTriggerStay2D(Collider2D collision)
-    {
-        if (collision.CompareTag("Player"))
-        {
-            PlayerPosition = collision.transform.position;
+            return;
 
         }
+        
     }
-    private void OnTriggerExit2D(Collider2D collision)
-    {
-        if (collision.CompareTag("Player"))
-        {
-            isPlayerIn = false;
-            
-        }
-    }
+    
     public void MoveInGang()
     {
         StartCoroutine(moveEnemy.MoveRandomly(gameObject.GetComponent<EnemyGang>(),gameObject,1,10));
     }
+
+    
 }

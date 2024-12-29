@@ -10,7 +10,7 @@ public class Enemy : MonoBehaviour
     Rigidbody2D rb;
     MoveEnemy moveEnemy;
     EnemyStats stats;
-    EnemyGang EnemyGang;
+   
     Health health;
     EnemyAttack attack;
 
@@ -18,7 +18,8 @@ public class Enemy : MonoBehaviour
     public Vector2 AttackLocation;
     public Vector2 TargetLocation;
 
-    public bool hasTarget;
+    public bool isPlayerIn;
+    public bool hasTarget=false;
     public bool isMoving;
     public int priority = 0;
     void Start()
@@ -28,18 +29,34 @@ public class Enemy : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         moveEnemy = GetComponent<MoveEnemy>();
         stats = GetComponent<EnemyStats>();
-        EnemyGang = transform.parent.gameObject.GetComponent<EnemyGang>();
-
+        
         health._health = 20;
 
     }
  
     void Update()
     {
-     
-        
-            TargetLocation=HiveLocation;
+
+
+        if (isPlayerIn){hasTarget = true;}
+        else if (!isPlayerIn) { hasTarget = false; }
+
+        if (hasTarget)
+        {
+            TargetLocation = AttackLocation;
             moveToTarget();
+            AttackToPlayer();
+        }
+        else if (!hasTarget) 
+        {
+            TargetLocation = HiveLocation;
+            moveToTarget();
+        }
+       
+           
+
+        
+       
            
 
     }
@@ -47,10 +64,6 @@ public class Enemy : MonoBehaviour
     {
         StartCoroutine(attack.Attack());
         
-    }
-    public void MoveInGang()
-    {
-        //StartCoroutine(moveEnemy.MoveRandomly(gameObject.GetComponent<Enemy>(),this.gameObject, EnemyGang.transform.position, stats.Speed,EnemyGang.Radius));   
     }
    
     public void moveToTarget() 
