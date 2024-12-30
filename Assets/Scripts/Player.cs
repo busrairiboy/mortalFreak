@@ -5,7 +5,7 @@ using UnityEngine;
 [RequireComponent(typeof(Rigidbody2D))]
 public class Player : MonoBehaviour
 {
-    [SerializeField] private float speed;
+    [SerializeField] private float speed;  //STATSDAN AL//
     [SerializeField] private FixedJoystick joystick;
     private Vector2 input;
     private Rigidbody2D rb;
@@ -37,7 +37,7 @@ public class Player : MonoBehaviour
         Stats.Armor = 5.0f;
         input.x = joystick.Horizontal;
         input.y = joystick.Vertical;
-        Debug.Log($"Joystick Values - Horizontal: {input.x}, Vertical: {input.y}");
+        Debug.Log($"Joystick Values - Horizontal: {input.x}, Vertical: {input.y}"); //ekranda görmek için yazdýk//
     }
 
     private void FixedUpdate()
