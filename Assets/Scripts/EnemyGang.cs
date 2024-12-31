@@ -1,44 +1,44 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting.Antlr3.Runtime.Misc;
 using UnityEngine;
 
 public class EnemyGang : MonoBehaviour
 {
-    public bool isPlayerIn=false;
-    public Vector2 PlayerPosition;
-    public float Radius;
 
-    private CircleCollider2D Collider;
+    public MoveEnemy moveEnemy;
+    public bool isPlayerIn=false;
+    public bool isMoving;
+    public bool hasTarget;
+    public Vector2 TargetLocation;
+
+    
 
     private void Start()
     {
-        Collider = GetComponent<CircleCollider2D>();
-        Radius = Collider.radius-0.5f;
-    }
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
-        if (collision.CompareTag("Player"))
-        {
-            isPlayerIn = true;
-            
-        }
-       
+        
+        moveEnemy = GetComponent<MoveEnemy>();
         
     }
-    private void OnTriggerStay2D(Collider2D collision)
+    
+    private void Update()
     {
-        if (collision.CompareTag("Player"))
+        if (!isMoving && !isPlayerIn)
         {
-            PlayerPosition = collision.transform.position;
+            MoveInGang();
+        }
+        else if (isPlayerIn) 
+        {
+            return;
 
         }
+        
     }
-    private void OnTriggerExit2D(Collider2D collision)
+    
+    public void MoveInGang()
     {
-        if (collision.CompareTag("Player"))
-        {
-            isPlayerIn = false;
-            
-        }
+        StartCoroutine(moveEnemy.MoveRandomly(gameObject.GetComponent<EnemyGang>(),gameObject,1,10));
     }
+
+    
 }

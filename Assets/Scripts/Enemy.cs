@@ -10,14 +10,18 @@ public class Enemy : MonoBehaviour
     Rigidbody2D rb;
     MoveEnemy moveEnemy;
     EnemyStats stats;
-    EnemyGang EnemyGang;
+   
     Health health;
     EnemyAttack attack;
 
+    public Vector2 HiveLocation;
+    public Vector2 AttackLocation;
     public Vector2 TargetLocation;
 
-    public bool hasTarget;
+    public bool isPlayerIn;
+    public bool hasTarget=false;
     public bool isMoving;
+    public int priority = 0;
     void Start()
     {
         attack = GetComponent<EnemyAttack>();
@@ -25,34 +29,35 @@ public class Enemy : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         moveEnemy = GetComponent<MoveEnemy>();
         stats = GetComponent<EnemyStats>();
-        EnemyGang = transform.parent.gameObject.GetComponent<EnemyGang>();
-
+        
         health._health = 20;
 
     }
  
     void Update()
     {
+
+
+        if (isPlayerIn){hasTarget = true;}
+        else if (!isPlayerIn) { hasTarget = false; }
+
+        if (hasTarget)
+        {
+            TargetLocation = AttackLocation;
+            moveToTarget();
+            AttackToPlayer();
+        }
+        else if (!hasTarget) 
+        {
+            TargetLocation = HiveLocation;
+            moveToTarget();
+        }
+       
+           
+
         
        
-        if (EnemyGang.isPlayerIn)
-        {
-            TargetLocation = EnemyGang.PlayerPosition;
-            if (TargetLocation != null) 
-            {
-                whenPlayerClose();
-
-                AttackToPlayer();
-            }
-            else { isMoving = false; }
-            
-        }
-        if(!isMoving) 
-        {
-            MoveInGang();
-        }
-       
-
+           
 
     }
     public void AttackToPlayer()
@@ -60,17 +65,10 @@ public class Enemy : MonoBehaviour
         StartCoroutine(attack.Attack());
         
     }
-    public void MoveInGang()
+   
+    public void moveToTarget() 
     {
-        StartCoroutine(moveEnemy.MoveRandomly(gameObject.GetComponent<Enemy>(),this.gameObject, EnemyGang.transform.position, stats.Speed,EnemyGang.Radius));   
-    }
-    
-    public void whenPlayerClose()
-    {
-
-        moveEnemy.MoveToTarget(gameObject.GetComponent<Enemy>(),this.gameObject, TargetLocation, stats.Speed);
-           
-        
+        moveEnemy.MoveToTarget(gameObject.GetComponent<Enemy>(), this.gameObject, TargetLocation, stats.Speed);
     }
 
 
