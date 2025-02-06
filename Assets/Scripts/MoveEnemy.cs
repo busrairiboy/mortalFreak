@@ -7,6 +7,7 @@ using UnityEngine;
 public class MoveEnemy : MonoBehaviour
 {
 
+
     public void MoveToTarget(Enemy enemy, GameObject gameObject, Vector2 TargetLocation, float speed)
     {
         enemy.isMoving = true;

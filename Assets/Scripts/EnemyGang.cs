@@ -20,7 +20,8 @@ public class EnemyGang : MonoBehaviour
         moveEnemy = GetComponent<MoveEnemy>();
         
     }
-    
+
+
     private void Update()
     {
         if (!isMoving && !isPlayerIn)
@@ -31,10 +32,13 @@ public class EnemyGang : MonoBehaviour
         {
             return;
 
+           
+            }
         }
-        
-    }
+
+
     
+
     public void MoveInGang()
     {
         StartCoroutine(moveEnemy.MoveRandomly(gameObject.GetComponent<EnemyGang>(),gameObject,1,10));

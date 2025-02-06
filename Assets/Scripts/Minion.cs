@@ -24,7 +24,7 @@ public class Minion : MonoBehaviour
         moveMinion = GetComponent<MoveMinion>();
         minionAttack = GetComponent<MinionAttack>();
 
-        PlayerPosition = GameObject.Find("Player").transform.position;
+        PlayerPosition = GameObject.Find("player").transform.position;
     }
     private void Update()
     {
