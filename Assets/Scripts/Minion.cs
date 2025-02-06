@@ -35,7 +35,7 @@ public class Minion : MonoBehaviour
 
     private void moveToPlayer() {
 
-        moveMinion.MoveToTarget(gameObject.GetComponent<Minion>(), gameObject, PlayerPosition, stats.Speed);
+       
 
     }
 

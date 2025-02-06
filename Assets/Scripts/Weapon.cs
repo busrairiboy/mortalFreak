@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Weapon : MonoBehaviour
 {
-    [SerializeField] public float damage;
-    [SerializeField] public float speed;
-    [SerializeField]  public float price;
+    public float damage;
+    public float speed;
+    public float price;
 }
