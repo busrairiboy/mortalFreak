@@ -39,7 +39,7 @@ public class PlayerController : MonoBehaviour
             if (enemy != null)
             {
                 playerHealth.TakeDamage(1);
-                playerHealth.showCurrentHealth();
+                //playerHealth.showCurrentHealth();
             }
         }
     }
@@ -52,7 +52,7 @@ public class PlayerController : MonoBehaviour
             if (enemy != null)
             {
                 playerHealth.TakeDamage(1);
-                playerHealth.showCurrentHealth();
+                //playerHealth.showCurrentHealth();
             }
         }
     }
