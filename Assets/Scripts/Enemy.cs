@@ -7,10 +7,9 @@ using static UnityEngine.Random;
 
 public class Enemy : MonoBehaviour
 {
-    Rigidbody2D rb;
+
     MoveEnemy moveEnemy;
     EnemyStats stats;
-   
     Health health;
     EnemyAttack attack;
 
@@ -19,17 +18,16 @@ public class Enemy : MonoBehaviour
     public Vector2 TargetLocation;
 
     public bool isPlayerIn;
-    public bool hasTarget=false;
-    public bool isMoving;
     public int priority = 0;
+
     void Start()
     {
         attack = GetComponent<EnemyAttack>();
-        health=GetComponent<Health>();
-        rb = GetComponent<Rigidbody2D>();
+        health=GetComponent<Health>();      
         moveEnemy = GetComponent<MoveEnemy>();
         stats = GetComponent<EnemyStats>();
-        
+
+        stats.Speed = 1;
         health._health = 20;
 
     }
@@ -37,27 +35,18 @@ public class Enemy : MonoBehaviour
     void Update()
     {
 
-
-        if (isPlayerIn){hasTarget = true;}
-        else if (!isPlayerIn) { hasTarget = false; }
-
-        if (hasTarget)
+        if (isPlayerIn)
         {
             TargetLocation = AttackLocation;
             moveToTarget();
             AttackToPlayer();
         }
-        else if (!hasTarget) 
+        else if (!isPlayerIn) 
         {
             TargetLocation = HiveLocation;
             moveToTarget();
         }
        
-           
-
-        
-       
-           
 
     }
     public void AttackToPlayer()
@@ -68,8 +57,11 @@ public class Enemy : MonoBehaviour
    
     public void moveToTarget() 
     {
-        moveEnemy.MoveToTarget(gameObject.GetComponent<Enemy>(), this.gameObject, TargetLocation, stats.Speed);
+       
+        moveEnemy.TargetLocation = TargetLocation;
+        moveEnemy.speed=stats.Speed;
     }
+  
 
 
 }

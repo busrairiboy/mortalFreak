@@ -4,27 +4,25 @@ using UnityEngine;
 
 public class AttackToPlayer : MonoBehaviour
 {
-    private CircleCollider2D Collider;
-    EnemyHive enemyHive;
-
     public bool isPlayerIn;
     public Vector2 playerPosition;
 
+    Track track;
+
     private void Start()
     {
-        Collider = GetComponent<CircleCollider2D>();
-        enemyHive = GetComponent<EnemyHive>();
+        track = GetComponent<Track>();  
     }
+
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.CompareTag("Player"))
         {
             isPlayerIn = true;
+            
 
         }
-
-
     }
     private void OnTriggerStay2D(Collider2D collision)
     {
@@ -39,7 +37,9 @@ public class AttackToPlayer : MonoBehaviour
         if (collision.CompareTag("Player"))
         {
             isPlayerIn = false;
-
+            track.isTracking = true;
+            
+           
         }
     }
 

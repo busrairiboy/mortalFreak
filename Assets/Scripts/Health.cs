@@ -2,33 +2,31 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+
 public class Health : MonoBehaviour
 {
-    [SerializeField] private float health;
 
-    public float _health
-    {
-        get => health;
-        set => health = value;
-    }
+    private float health;
 
+    public float _health { get => health; set => health = value; }
     public float getCurrentHealth()
     {
         return health;
     }
+
 
     public void TakeDamage(float damage)
     {
         health -= damage;
         if (health <= 0)
         {
-            Debug.Log("ÖLDÜN GEÇ");
+            Debug.Log("Karakter öldü..");
             Die();
         }
     }
-    public void showCurrentHealth()
+    public void healthGoster()
     {
-        Debug.Log("enemyden hasar alýyorsun ve kalan canýn : " + getCurrentHealth());
+            Debug.Log("Kalan canýnýz : " + getCurrentHealth()); 
     }
 
     public void Die()
@@ -36,7 +34,3 @@ public class Health : MonoBehaviour
         Destroy(this.gameObject);
     }
 }
-
-
-
-

@@ -5,6 +5,6 @@ using UnityEngine;
 public class Armor : MonoBehaviour
 {
 
-    [SerializeField] public float armor;
-    [SerializeField] public float price;
+     public float armor;
+     public float price;
 }

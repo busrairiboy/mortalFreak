@@ -8,45 +8,48 @@ public class EnemyHive : MonoBehaviour
     AttackToPlayer attackToPlayer;
     HiveCircles hiveCircles;
     GameObject enemyGang;
-    EnemyGang Gang;
+    Track track;
+
 
     public Vector2 PlayerPosition;
+
+
     private void Start()
     {
-        enemyGang = gameObject.transform.parent.gameObject;
-        attackToPlayer = GetComponent<AttackToPlayer>();
-        Gang=GetComponent<EnemyGang>();
+        enemyGang = gameObject.transform.parent.gameObject;//merkezi konum için gereklidir.
+        attackToPlayer = GetComponent<AttackToPlayer>();   
         hiveCircles=GetComponent<HiveCircles>();
+        track = GetComponent<Track>();  
              
     }
 
 
     private void Update()
     {
-        PlayerPosition = attackToPlayer.playerPosition;
+        PlayerPosition = attackToPlayer.playerPosition;//metotlaþtýr
 
         CollectEnemiesFromGang();
         sortEnemiesByPriority();
-
         Circles();
 
         if (attackToPlayer.isPlayerIn)
         {
-            Gang.isPlayerIn = true;
             SendPlayerPosition(true);
         }
-        else if (!attackToPlayer.isPlayerIn) 
+        else if (!attackToPlayer.isPlayerIn&&!track.isTracking)
         {
-            Gang.isPlayerIn= false;
             SendPlayerPosition(false);
         }
-       
-
+        else if (track.isTracking) 
+        {
+            PlayerPosition=track.TrackPosition;
+            SendPlayerPosition(true);
+        
+        }
 
     }
 
-
-    public void Circles() 
+    public void Circles() //sayýya göre otamatik kendisi circlelarý oluþturacak bir sistem lazým
     {
         hiveCircles.firstCircle(enemyHive);
        
