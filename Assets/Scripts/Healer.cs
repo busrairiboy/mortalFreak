@@ -3,8 +3,8 @@ using System.Collections.Generic;
 
 public class Healer : MonoBehaviour
 {
-    [SerializeField] private float healAmount = 20f; 
-    [SerializeField] private float healInterval = 1f; 
+    [SerializeField] private float healAmount = 10f; 
+    [SerializeField] private float healInterval = 2f;//saniye 
     [SerializeField] private float healRadius = 4f; 
     [SerializeField] private LayerMask ally; 
 
@@ -41,7 +41,7 @@ public class Healer : MonoBehaviour
 
     foreach (Health target in targetsInRange)
         {
-            if (!target.IsFullHealth()) // Saðlýk dolmamýþsa þifa ver
+            if (!target.IsFullHealth()) 
             {
                 target.Heal(healAmount);
                 Debug.Log(target.gameObject.name + " hop iyileþtin yaa " + target.GetCurrentHealth());
