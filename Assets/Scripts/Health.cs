@@ -1,36 +1,58 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-
 
 public class Health : MonoBehaviour
 {
+    [SerializeField] private float maxHealth = 100f;
+    private float currentHealth;
 
-    [SerializeField] private float health;
-
-    public float _health { get => health; set => health = value; }
-    public float getCurrentHealth()
+    void Start()
     {
-        return health;
+        currentHealth = maxHealth;
+        ShowHealth(); 
     }
 
+    public float GetCurrentHealth()
+    {
+        return currentHealth;
+    }
+
+    public void SetCurrentHealth(float amount)
+    {
+        currentHealth = Mathf.Clamp(amount, 0, maxHealth);
+        ShowHealth(); 
+    }
+
+    public void Heal(float amount)
+    {
+        currentHealth = Mathf.Min(currentHealth + amount, maxHealth);
+        ShowHealth(); 
+    }
 
     public void TakeDamage(float damage)
     {
-        health -= damage;
-        if (health <= 0)
+        currentHealth = Mathf.Max(currentHealth - damage, 0); 
+        ShowHealth(); 
+
+        if (currentHealth <= 0)
         {
-            Debug.Log("Karakter öldü..");
+            Debug.Log("Karakter öldü.");
             Die();
         }
     }
-    public void healthGoster()
+
+    public bool IsFullHealth()
     {
-            Debug.Log("Kalan canýnýz : " + getCurrentHealth()); 
+        return currentHealth >= maxHealth;
     }
 
-    public void Die()
+    public void ShowHealth()
     {
-        Destroy(this.gameObject);
+        Debug.Log("Kalan can: " + currentHealth);
+    }
+
+    private void Die()
+    {
+      
+        Destroy(gameObject);
     }
 }
