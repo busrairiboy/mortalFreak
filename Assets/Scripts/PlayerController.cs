@@ -21,11 +21,13 @@ public class PlayerController : MonoBehaviour
         float moveY = joystick.Vertical;
 
         Vector2 moveInput = new Vector2(moveX, moveY);
-        Vector2 moveVelocity = moveInput.normalized * moveSpeed;
+        Vector2 moveVelocity = moveInput.normalized * moveSpeed;// daha sonra silinecek
 
-        rb.velocity = moveVelocity;
+        Vector2 moveDirection = moveInput.normalized;
 
-        if (moveVelocity.magnitude > 0)
+        transform.Translate(moveDirection * moveSpeed * Time.deltaTime);
+
+        if (moveVelocity.magnitude > 0)//daha sonra silinecek
         {
             Debug.Log("hareket ettin ve can barýn dolu");
         }
