@@ -1,4 +1,3 @@
-using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
@@ -48,6 +47,8 @@ public class Enemy : MonoBehaviour
     {
         StartCoroutine(attack.Attack());
     }
+
+
 
     public void moveToTarget()
     {
