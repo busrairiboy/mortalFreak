@@ -11,8 +11,10 @@ public abstract class Stats : MonoBehaviour
     [SerializeField] private float armor;
     [SerializeField] private float weapon;
     [SerializeField] private float weapon_speed;
+    [SerializeField] public int priority;
+    [SerializeField] public Vector2 HiveLocation;
     //
-   
+
     public float AttackRange { get=> attackRange; set => attackRange = value; }
     public float Damage { get => damage; set => damage = value; }
     public float Speed { get => speed; set => speed = value; }

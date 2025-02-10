@@ -39,6 +39,7 @@ public class Enemy : MonoBehaviour
         }
         else if (!isPlayerIn)
         {
+            HiveLocation = stats.HiveLocation;
             TargetLocation = HiveLocation;
             moveToTarget();
         }

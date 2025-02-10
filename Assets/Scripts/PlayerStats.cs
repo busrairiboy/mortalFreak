@@ -12,6 +12,7 @@ public class PlayerStats :Stats
     [SerializeField] private string weapon_name;
     [SerializeField] private float totalDamage;
     
+    
 
     public float TotalDamage { get=> totalDamage; set => totalDamage = value; }
     public float Weapon_Price { get => weapon_price; set => weapon_price = value; }
@@ -21,10 +22,5 @@ public class PlayerStats :Stats
 
 
 
-    private void Update()
-    {
-      
-    }
-   
 
 }

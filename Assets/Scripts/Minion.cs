@@ -5,37 +5,37 @@ using UnityEngine;
 
 public class Minion : MonoBehaviour
 {
-    Rigidbody2D rb;
-    MinionStats stats;
-    Health health;
+   
+    MinionStats stats;   
     MoveMinion moveMinion;
-    MinionAttack minionAttack;
+    GameObject Player;
     public Vector2 PlayerPosition;
-    Vector2 TargetLocation;
+    public Vector2 HiveLocation;
+    public Vector2 TargetLocation;
 
-    public bool isMoving;
-    public bool hasTarget;
 
     private void Start()
     {
-        rb = GetComponent<Rigidbody2D>();
-        stats = GetComponent<MinionStats>();
-        health = GetComponent<Health>();
+        Player = GameObject.FindWithTag("Player");
+        stats = GetComponent<MinionStats>();      
         moveMinion = GetComponent<MoveMinion>();
-        minionAttack = GetComponent<MinionAttack>();
+      
 
-        PlayerPosition = GameObject.Find("player").transform.position;
+        
     }
     private void Update()
     {
-        moveToPlayer();
+
+        HiveMovement();
+
     
     }
 
 
-    private void moveToPlayer() {
+    private void HiveMovement() {
 
-       
+        PlayerPosition=Player.transform.position;
+        moveMinion.TargetLocation = stats.HiveLocation + PlayerPosition ;
 
     }
 

@@ -6,14 +6,14 @@ public class HiveCircles : MonoBehaviour
 {
     public Vector2 center;
     public float radius = 0.8f;
-    public int numberOfPoints = 5;
+    public int numberOfPoints = 5;//sýkýntý çýkarýyor küçük guruplara adapte etme konusunda ilerde sorun yapýcak
     
     private void Update()
     {
         center = transform.position;
     }
 
-    public void firstCircle(List<GameObject> enemies) 
+    public void firstCircle(List<GameObject> Minions) 
     {
         for (int i = 0; i < numberOfPoints; i++)
         {
@@ -29,12 +29,12 @@ public class HiveCircles : MonoBehaviour
 
             
             Vector2 pointPosition = new Vector2(x, y);
-            GameObject enemy = enemies[i]; 
-            Enemy enemyScript = enemy.GetComponent<Enemy>();
+            GameObject minion = Minions[i]; 
+            Stats statsScript = minion.GetComponent<Stats>();
 
-            if (enemyScript != null)
+            if (statsScript != null)
             {
-                enemyScript.HiveLocation = pointPosition;
+                statsScript.HiveLocation = pointPosition;
             }
             
             
@@ -42,12 +42,12 @@ public class HiveCircles : MonoBehaviour
 
     }
 
-    public void GenereteCircle(int circlenumber,List<GameObject> enemies,int pass) 
+    public void GenereteCircle(int circlenumber,List<GameObject> Minions, int pass) 
     {
         //int points = numberOfPoints*circlenumber;
         float local_radius = radius * circlenumber;
 
-        int count=(enemies.Count-pass);
+        int count=(Minions.Count-pass);
 
         for (int i = 0; i < count ; i++) 
         {
@@ -61,12 +61,12 @@ public class HiveCircles : MonoBehaviour
 
 
             Vector2 pointPosition = new Vector2(x, y);
-            GameObject enemy = enemies[i+pass];
-            Enemy enemyScript = enemy.GetComponent<Enemy>();
+            GameObject minion= Minions[i+pass];
+            Stats statsScript = minion.GetComponent<Stats>();
 
-            if (enemyScript != null)
+            if (statsScript != null)
             {
-                enemyScript.HiveLocation = pointPosition;
+                statsScript.HiveLocation = pointPosition;
             }
 
         }
