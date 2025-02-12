@@ -1,13 +1,10 @@
-using System.Collections.Generic;
-using TMPro;
 using UnityEngine;
-using static UnityEngine.Random;
 
 public class Enemy : MonoBehaviour
 {
     MoveEnemy moveEnemy;
     EnemyStats stats;
-    Health health;
+    Health health; 
     EnemyAttack attack;
 
     public Vector2 HiveLocation;
@@ -20,13 +17,12 @@ public class Enemy : MonoBehaviour
     void Start()
     {
         attack = GetComponent<EnemyAttack>();
-        health = GetComponent<Health>();
+        health = GetComponent<Health>(); 
         moveEnemy = GetComponent<MoveEnemy>();
         stats = GetComponent<EnemyStats>();
 
         stats.Speed = 1;
         health.SetCurrentHealth(20); 
-
     }
 
     void Update()
@@ -44,16 +40,32 @@ public class Enemy : MonoBehaviour
             moveToTarget();
         }
     }
+
     public void AttackToPlayer()
     {
         StartCoroutine(attack.Attack());
     }
 
-
-
     public void moveToTarget()
     {
         moveEnemy.TargetLocation = TargetLocation;
         moveEnemy.speed = stats.Speed;
+    }
+
+   
+    public void TakeDamage(float damage)
+    {
+        health.TakeDamage(damage); 
+
+        if (health.GetCurrentHealth() <= 0)
+        {
+            Destroy(gameObject); 
+        }
+    }
+
+   //enemy.healthe eriþemedðimden setter getter kullanýldý.
+    public float GetHealth()
+    {
+        return health.GetCurrentHealth();
     }
 }

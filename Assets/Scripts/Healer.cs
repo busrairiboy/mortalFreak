@@ -4,7 +4,7 @@ using System.Collections.Generic;
 public class Healer : MonoBehaviour
 {
     [SerializeField] private float healAmount = 10f; 
-    [SerializeField] private float healInterval = 2f;//saniye 
+    [SerializeField] private float healInterval = 2f;
     [SerializeField] private float healRadius = 4f; 
     [SerializeField] private LayerMask ally; 
 

@@ -1,18 +1,30 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class Wizard : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    //wizard hasar almalý
+    public int damage = 5; 
+    public float damageTimeScale = 1f; 
 
-    // Update is called once per frame
-    void Update()
+    private float lastDamageTime; 
+
+    private void OnTriggerStay2D(Collider2D other)
     {
-        
+      
+        if (other.CompareTag("Enemy"))
+        {
+           
+            if (Time.time - lastDamageTime >= damageTimeScale)
+            {
+                Enemy enemy = other.GetComponent<Enemy>();
+                if (enemy != null)
+                {
+                    enemy.TakeDamage(damage); 
+                    Debug.Log(" büyücü alanýnda ve enemy healthi: " + enemy.GetHealth()); 
+
+                    lastDamageTime = Time.time; 
+                }
+            }
+        }
     }
 }
