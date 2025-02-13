@@ -63,7 +63,7 @@ public class Enemy : MonoBehaviour
         }
     }
 
-   //enemy.healthe eriþemedðimden setter getter kullanýldý.
+   //enemy.healthe eriþemedðimden getter kullanýldý.
     public float GetHealth()
     {
         return health.GetCurrentHealth();

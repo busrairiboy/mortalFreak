@@ -19688,11 +19688,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 2007974231635383557, guid: f96682d6813c4a540b9e9a301f45ebcd, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -1.31
+      value: 7.85
       objectReference: {fileID: 0}
     - target: {fileID: 2007974231635383557, guid: f96682d6813c4a540b9e9a301f45ebcd, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: 0.26
       objectReference: {fileID: 0}
     - target: {fileID: 2007974231635383557, guid: f96682d6813c4a540b9e9a301f45ebcd, type: 3}
       propertyPath: m_LocalPosition.z
@@ -20622,6 +20622,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cd672e4b11126d64d906fd8d6d22ec58, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  damage: 10
+  damageTimeScale: 1
 --- !u!1001 &1061273809
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -21148,11 +21150,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2007974231635383557, guid: f96682d6813c4a540b9e9a301f45ebcd, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 1.52
+      value: 6.81
       objectReference: {fileID: 0}
     - target: {fileID: 2007974231635383557, guid: f96682d6813c4a540b9e9a301f45ebcd, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: 0.21
       objectReference: {fileID: 0}
     - target: {fileID: 2007974231635383557, guid: f96682d6813c4a540b9e9a301f45ebcd, type: 3}
       propertyPath: m_LocalPosition.z
@@ -21188,11 +21190,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2834924137183630058, guid: f96682d6813c4a540b9e9a301f45ebcd, type: 3}
       propertyPath: m_Radius
-      value: 1.8898277
+      value: 2.326458
       objectReference: {fileID: 0}
     - target: {fileID: 2834924137183630058, guid: f96682d6813c4a540b9e9a301f45ebcd, type: 3}
       propertyPath: m_Offset.x
-      value: 0.11103641
+      value: 0.6044597
       objectReference: {fileID: 0}
     - target: {fileID: 2834924137183630058, guid: f96682d6813c4a540b9e9a301f45ebcd, type: 3}
       propertyPath: m_Offset.y
@@ -23497,11 +23499,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2834924137183630058, guid: f96682d6813c4a540b9e9a301f45ebcd, type: 3}
       propertyPath: m_Radius
-      value: 2.1235795
+      value: 2.361236
       objectReference: {fileID: 0}
     - target: {fileID: 2834924137183630058, guid: f96682d6813c4a540b9e9a301f45ebcd, type: 3}
       propertyPath: m_Offset.x
-      value: -0.09839201
+      value: 0.13926458
       objectReference: {fileID: 0}
     - target: {fileID: 2834924137183630058, guid: f96682d6813c4a540b9e9a301f45ebcd, type: 3}
       propertyPath: m_Offset.y
@@ -23576,6 +23578,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1cd5331d1a467274ea2b9b7a3b822c08, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  damage: 10
+  damageInterval: 1
 --- !u!1 &2016216909
 GameObject:
   m_ObjectHideFlags: 0
