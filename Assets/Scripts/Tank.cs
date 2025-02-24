@@ -1,18 +1,40 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
-public class NewBehaviourScript1 : MonoBehaviour
+public class Tank : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    public int health = 200; 
+    public int damage = 15; 
+    public float damageInterval = 2f; //hasar aralýðý diðerlerinden fazla olmalý ,bence yani?
+    public int armor = 20; 
 
-    // Update is called once per frame
-    void Update()
-    {
-        
+    private float lastDamageTime;
+
+    private void OnTriggerStay2D(Collider2D other){
+        if (other.CompareTag("Enemy")){
+
+            if (Time.time - lastDamageTime >= damageInterval){
+                Enemy enemy = other.GetComponent<Enemy>();
+
+                if (enemy != null) { 
+                    int reducedDamage = Mathf.Max(0, damage - armor); //// hasarý armordan çýkararak uyguladým
+                    enemy.TakeDamage(reducedDamage);
+
+                    TakeDamage(5);
+                    Debug.Log("Tank alanda ve enemy health: " + enemy.GetHealth());
+                    Debug.Log("Tank'ýn saðlýðý: " + health);
+                    lastDamageTime = Time.time;
+   }
+     }
+        }
+    }
+    public void TakeDamage(int amount){
+        health -= amount;
+        if (health <= 0){
+            Die();
+}
+    }
+    private void Die(){
+        Debug.Log("Tank öldü");
+        Destroy(gameObject);
     }
 }
