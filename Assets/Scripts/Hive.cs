@@ -1,10 +1,11 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public abstract class Hive : MonoBehaviour
 {
-    public List<GameObject> hive = new List<GameObject>();
+    public List<GameObject> hive  = new List<GameObject>();
     HiveCircles hiveCircles;
     GameObject ParentObject;
 
@@ -22,23 +23,11 @@ public abstract class Hive : MonoBehaviour
     }
     protected virtual void Circles() //sayýya göre otamatik kendisi circlelarý oluþturacak bir sistem lazým
     {
-        hiveCircles.firstCircle(hive);
-
-        if (hive.Count > 5 & hive.Count <= 15)
-        {
-            genereteCircle(2, 5);
-        }
-        if (hive.Count > 15 & hive.Count <= 40)
-        {
-            genereteCircle(3, 15);
-        }
+        hiveCircles.ArrangeMinionsInCircles(hive);
+     
 
     }
-    protected virtual void genereteCircle(int circleNumbers, int pass)
-    {
-        hiveCircles.GenereteCircle(circleNumbers, hive, pass);
-    }
-
+  
     protected virtual void CollectMinions(string hiveObject)
     {
 
@@ -58,7 +47,8 @@ public abstract class Hive : MonoBehaviour
     protected virtual void sortEnemiesByPriority()
     {
 
-        hive.Sort((obj1, obj2) => obj2.GetComponent<Stats>().priority.CompareTo(obj1.GetComponent<Stats>().priority));
-
+        hive = hive.OrderByDescending(obj => obj.GetComponent<Stats>().priority)
+               .ThenBy(obj => hive.IndexOf(obj)) // Orijinal sýralamayý korumak için
+               .ToList();
     }
 }
