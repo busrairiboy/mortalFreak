@@ -8,7 +8,6 @@ public class HiveCircles : MonoBehaviour
     //This script 
     public Vector2 center;
     public float radius = 0.8f;
-    public int numberOfPoints;//sýkýntý çýkarýyor küçük guruplara adapte etme konusunda ilerde sorun yapýcak
     public int numberOfCircles = 0;
     
     private void Update()
@@ -57,13 +56,16 @@ public class HiveCircles : MonoBehaviour
 
             Vector2 pointPosition = new Vector2(x, y);
 
-            
-            GameObject minion = Minions[i + pass];
-            Stats statsScript = minion.GetComponent<Stats>();
 
-            if (statsScript != null)
+            if (i + pass < Minions.Count)
             {
-                statsScript.HiveLocation = pointPosition;
+                GameObject minion = Minions[i + pass];
+
+                Stats statsScript = minion.GetComponent<Stats>();
+                if (statsScript != null)
+                {
+                    statsScript.HiveLocation = pointPosition;
+                }
             }
         }
     }
