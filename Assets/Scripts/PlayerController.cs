@@ -29,7 +29,7 @@ public class PlayerController : MonoBehaviour
 
         if (moveVelocity.magnitude > 0)//daha sonra silinecek
         {
-            Debug.Log("hareket ettin ve can barýn dolu");
+           // Debug.Log("hareket ettin ve can barýn dolu");
         }
         
     }

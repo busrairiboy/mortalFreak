@@ -113,7 +113,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 228603328, guid: 1c3479b00e765764fb88ebb521f858db, type: 3}
-  m_Color: {r: 0, g: 0.5276816, b: 1, a: 1}
+  m_Color: {r: 1, g: 0.5370881, b: 0.495283, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -135,7 +135,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 925a31782f2942f40922d1e2691576ef, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 0
+  maxHealth: 100
 --- !u!114 &1051725569423410906
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -222,6 +222,8 @@ MonoBehaviour:
   armor: 0
   weapon: 0
   weapon_speed: 0
+  priority: 1
+  HiveLocation: {x: 0, y: 0}
 --- !u!114 &7578965367425216612
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -79,7 +79,7 @@ public class EnemyHive : Hive
 
     public void SendPlayerPosition(bool setplayerIn) {
         int count = hive.Count;
-        Debug.Log(count);
+       
         for (int i = 0; i < count; i++) 
         {
             hive[i].gameObject.GetComponent<Enemy>().isPlayerIn=setplayerIn;

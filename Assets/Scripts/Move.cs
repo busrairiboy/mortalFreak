@@ -2,11 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public abstract class Move : MonoBehaviour 
+public class Move : MonoBehaviour 
 { 
     
-   
-
     protected virtual void MoveToTarget(Vector2 TargetLocation,float speed) 
     {
        

@@ -51,7 +51,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   damage: 0
   attackRange: 0
-  speed: 1
+  speed: 2.5
   armor: 0
   weapon: 0
   weapon_speed: 0
@@ -69,7 +69,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f626bb11f1c7f6c4fabb6cb4971060c8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 1
+  speed: 2.5
   TargetLocation: {x: 0, y: 0}
 --- !u!114 &8876439849069147348
 MonoBehaviour:
