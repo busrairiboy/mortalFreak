@@ -13,6 +13,7 @@ public class Enemy : MonoBehaviour
 
     public bool isPlayerIn;
     public int priority = 0;
+    //statsa taþýnacak deðerler var 
 
     void Start()
     {

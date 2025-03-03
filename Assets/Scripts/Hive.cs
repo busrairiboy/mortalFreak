@@ -21,7 +21,7 @@ public abstract class Hive : MonoBehaviour
     {
         ParentObject = gameObject.transform.parent.gameObject;
     }
-    protected virtual void Circles() //sayýya göre otamatik kendisi circlelarý oluþturacak bir sistem lazým
+    protected virtual void Circles()
     {
         hiveCircles.ArrangeMinionsInCircles(hive);
      
