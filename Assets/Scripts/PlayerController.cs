@@ -31,6 +31,7 @@ public class PlayerController : MonoBehaviour
         {
             Debug.Log("hareket ettin ve can barýn dolu");
         }
+        
     }
 
     void OnTriggerEnter2D(Collider2D collision)

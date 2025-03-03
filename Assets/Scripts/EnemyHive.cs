@@ -6,9 +6,11 @@ using UnityEngine;
 public class EnemyHive : Hive
 {
     
-    AttackToPlayer attackToPlayer;   
+    public AttackToPlayer attackToPlayer;   
     GameObject enemyGang;
     Track track;
+    public bool isPlayerIn=false;
+    public bool control=false;
 
 
     public Vector2 PlayerPosition;
@@ -18,7 +20,7 @@ public class EnemyHive : Hive
     {
         base.Start();
         enemyGang = gameObject.transform.parent.gameObject;//merkezi konum için gereklidir.
-        attackToPlayer = GetComponent<AttackToPlayer>();     
+       // attackToPlayer = GetComponent<AttackToPlayer>();     
         track = GetComponent<Track>();  
              
     }
@@ -27,34 +29,57 @@ public class EnemyHive : Hive
     private new void Update()
     {
         base.Update();
-        PlayerPosition = attackToPlayer.playerPosition;//metotlaþtýr
-
+       
         CollectMinions("Enemy");
         sortEnemiesByPriority();
         Circles();
 
-        if (attackToPlayer.isPlayerIn)
+        if (isPlayerIn)
         {
+            control = true;
             SendPlayerPosition(true);
         }
-        else if (!attackToPlayer.isPlayerIn&&!track.isTracking)
+        else if (!isPlayerIn&&!track.isTracking)
         {
+              
             SendPlayerPosition(false);
         }
         else if (track.isTracking) 
         {
+           
             PlayerPosition=track.TrackPosition;
             SendPlayerPosition(true);
         
         }
 
     }
+    private void FixedUpdate()
+    {
+        isPlayerIn = attackToPlayer.isPlayerIn;
+        PlayerPosition = attackToPlayer.playerPosition;
+        if (isPlayerIn)
+        {
+            control = true;
+            SendPlayerPosition(true);
+        }
+        else if (!isPlayerIn && !track.isTracking)
+        {
 
-   
-  
+            SendPlayerPosition(false);
+        }
+        else if (track.isTracking)
+        {
+
+            PlayerPosition = track.TrackPosition;
+            SendPlayerPosition(true);
+
+        }
+    }
+
+
     public void SendPlayerPosition(bool setplayerIn) {
         int count = hive.Count;
-
+        Debug.Log(count);
         for (int i = 0; i < count; i++) 
         {
             hive[i].gameObject.GetComponent<Enemy>().isPlayerIn=setplayerIn;
