@@ -3,48 +3,48 @@ using UnityEngine;
 public class Fighter : MonoBehaviour
 {
     public int health = 100;
-    public int damage = 10;
-    public float damageInterval = 1f; //aralýk
 
-    private float lastDamageTime;
-
-    private void OnTriggerStay2D(Collider2D other)
+    private void Start()
     {
-        if (other.CompareTag("Enemy"))
-        {
-
-            if (Time.time - lastDamageTime >= damageInterval)
-            {
-                Enemy enemy = other.GetComponent<Enemy>();
-                if (enemy != null)
-                {
-                    enemy.TakeDamage(damage);
-
-                    TakeDamage(5);
-
-                    Debug.Log("Dövüþçü alanda ve enemy health: " + enemy.GetHealth());
-                    Debug.Log("Dövüþçü saðlýðý: " + health);
-
-                    lastDamageTime = Time.time;
-                }
-            }
-        }
+        Debug.Log("Dövüþçü alanda  " + health);
     }
 
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+
+        if (collision.collider.CompareTag("Player"))
+        {
+
+            TakeDamage(9);
+        }
+
+    }
+
+
+    private void OnCollisionStay2D(Collision2D other)
+    {
+
+        if (other.collider.CompareTag("Player"))
+        {
+            TakeDamage(8);
+             Debug.Log("dövüþçü saðlýk: " + health);
+        }
+    }
 
     public void TakeDamage(int amount)
     {
         health -= amount;
+       // Debug.Log("yeni dövüþçü saðlýk : " + health);
+
         if (health <= 0)
         {
             Die();
         }
     }
 
-
     private void Die()
     {
-        Debug.Log("Dövüþçü öldü");
+        Debug.Log("dövüþçü öldü");
         Destroy(gameObject);
     }
 }

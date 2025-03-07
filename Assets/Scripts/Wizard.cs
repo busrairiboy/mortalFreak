@@ -2,41 +2,56 @@ using UnityEngine;
 
 public class Wizard : MonoBehaviour
 {
-    public int health = 100; 
+    public int health = 100;
     public int damage = 5;
-    public float damageTimeScale = 1f;
+    public float damageTimeScale = 5f;
+    public float noDamageRadius = 2f; 
 
     private float lastDamageTime;
 
-    private void OnTriggerStay2D(Collider2D other){
-        if (other.CompareTag("Enemy")){
-            if (Time.time - lastDamageTime >= damageTimeScale){
-                Enemy enemy = other.GetComponent<Enemy>();
-                if (enemy != null) {
-                    enemy.TakeDamage(damage);
-                    Debug.Log("Büyücü alanýnda ve enemy healthi: " + enemy.GetHealth());
-
-                    
-            TakeDamage(10);  
+    // private bool isPlayerInArea = false;  // Player'ýn alanda olup olmadýðýný kontrol ederiz.
 
 
-            Debug.Log("Büyücünün saðlýðý: " + health);
 
-            lastDamageTime = Time.time;
+
+    private void Start()
+    {
+        Debug.Log("Büyücü alanda  " + health);
     }
-}
-}
-  }
 
-    public void TakeDamage(int amount){
-        health -= amount; 
-        if (health <= 0){
-            Die(); 
+    private void OnCollisionStay2D(Collision2D other)
+    {
+       
+        if (other.collider.CompareTag("Player"))
+        {
+            TakeDamage(8); 
+            Debug.Log("Wizard saðlýk: " + health);
         }
-   }
+    }
 
-    private void Die(){
-        Debug.Log("Büyücü öldü");
+    private void OnCollisionEnter2D(Collision2D other)
+    {
+        if (other.collider.CompareTag("Player"))
+        {
+            TakeDamage(8); 
+           // Debug.Log("Wizard saðlýk: " + health);
+        }
+    }
+
+
+
+    public void TakeDamage(int amount)
+    {
+        health -= amount;
+        if (health <= 0)
+        {
+            Die();
+        }
+    }
+
+    private void Die()
+    {
+        Debug.Log("Wizard öldü");
         Destroy(gameObject); 
-   }
+    }
 }

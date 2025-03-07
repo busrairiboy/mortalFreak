@@ -70,3 +70,6 @@ public class Enemy : MonoBehaviour
         return health.GetCurrentHealth();
     }
 }
+
+
+

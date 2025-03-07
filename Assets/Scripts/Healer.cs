@@ -14,10 +14,12 @@ public class Healer : MonoBehaviour
     private CircleCollider2D healingZone;
 
     [SerializeField] private float health = 100f; 
-    [SerializeField] private float damageAmount = 10f; 
+    //[SerializeField] private float damageAmount = 10f; 
 
     void Start()
     {
+       
+        Debug.Log("Healer alanda  " + health);
         healingZone = gameObject.AddComponent<CircleCollider2D>();
         healingZone.radius = healRadius;
         healingZone.isTrigger = true;
