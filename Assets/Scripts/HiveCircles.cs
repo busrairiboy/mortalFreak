@@ -7,7 +7,7 @@ public class HiveCircles : MonoBehaviour
 {
     //This script 
     public Vector2 center;
-    public float radius = 0.8f;
+    public float radius = 1f;
     public int numberOfCircles = 0;
     
     private void Update()

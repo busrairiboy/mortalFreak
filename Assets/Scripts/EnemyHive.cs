@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class EnemyHive : Hive
 {
-    
+    //ölen objeler hala aranmaya devam ediyor hataya sebebiyet veriyor
     public AttackToPlayer attackToPlayer;   
     GameObject enemyGang;
     Track track;
@@ -53,10 +53,12 @@ public class EnemyHive : Hive
         }
 
     }
-    private void FixedUpdate()
+    private new void FixedUpdate()
     {
+        base.FixedUpdate();
         isPlayerIn = attackToPlayer.isPlayerIn;
         PlayerPosition = attackToPlayer.playerPosition;
+
         if (isPlayerIn)
         {
             control = true;

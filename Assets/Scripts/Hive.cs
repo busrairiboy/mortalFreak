@@ -21,6 +21,10 @@ public abstract class Hive : MonoBehaviour
     {
         ParentObject = gameObject.transform.parent.gameObject;
     }
+    protected virtual void FixedUpdate()
+    {
+        CleanDeadMinions();
+    }
     protected virtual void Circles()
     {
         hiveCircles.ArrangeMinionsInCircles(hive);
@@ -43,6 +47,10 @@ public abstract class Hive : MonoBehaviour
 
         }
 
+    }
+    protected virtual void CleanDeadMinions()
+    {
+        hive.RemoveAll(minion => minion == null || !minion.activeSelf);
     }
     protected virtual void sortEnemiesByPriority()
     {

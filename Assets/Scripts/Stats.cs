@@ -4,6 +4,7 @@ using UnityEngine;
 
 public abstract class Stats : MonoBehaviour
 {
+    //scriptableobaject
     //interface
     [SerializeField] private float damage;
     [SerializeField] private float attackRange;

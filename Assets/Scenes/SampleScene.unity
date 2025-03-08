@@ -146801,7 +146801,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4802238796160721414, guid: b2079593dd38acd41966b005740e4957, type: 3}
       propertyPath: radius
-      value: 1
+      value: 1.1
       objectReference: {fileID: 0}
     - target: {fileID: 7852911569075436677, guid: b2079593dd38acd41966b005740e4957, type: 3}
       propertyPath: m_LocalPosition.x
@@ -146842,6 +146842,10 @@ PrefabInstance:
     - target: {fileID: 7852911569075436677, guid: b2079593dd38acd41966b005740e4957, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7901776092778772399, guid: b2079593dd38acd41966b005740e4957, type: 3}
+      propertyPath: m_Name
+      value: Hive
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -150758,6 +150762,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1294111359536223906, guid: b29d3be782832784bba988ca5335a0a8, type: 3}
+      propertyPath: m_Name
+      value: Hive
+      objectReference: {fileID: 0}
     - target: {fileID: 3014381922534350712, guid: b29d3be782832784bba988ca5335a0a8, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0.04

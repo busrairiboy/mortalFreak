@@ -47,6 +47,8 @@ public class GangGenerator : MonoBehaviour
             bool isValid = true;
             foreach (Vector2 pos in positions)
             {
+                //map elementlerinden de uzaklýða göre konumlandýrma yapýlacak
+                //player ve kovanýnýn büyüklüðü kadar da uzaklandýrma olacak
                 if (Vector2.Distance(pos, newPosition) < minDistance)
                 {
                     isValid = false;
