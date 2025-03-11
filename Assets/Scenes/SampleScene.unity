@@ -150806,6 +150806,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5378420185201752046, guid: b29d3be782832784bba988ca5335a0a8, type: 3}
+      propertyPath: radius
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8001095146323446042, guid: b29d3be782832784bba988ca5335a0a8, type: 3}
       propertyPath: m_Name
       value: EnemyGang

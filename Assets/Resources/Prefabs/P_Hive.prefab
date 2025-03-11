@@ -59,6 +59,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   center: {x: 0, y: 0}
-  radius: 0.8
-  numberOfPoints: 0
+  radius: 1
   numberOfCircles: 0

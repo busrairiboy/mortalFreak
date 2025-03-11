@@ -5,14 +5,14 @@ using UnityEngine.UIElements;
 
 public class GangGenerator : MonoBehaviour
 {
-    public int prefabNumber = 5;
+    public int GangNumber = 5;
     public Vector2 center = Vector2.zero;
     public Vector2 mapSize = new Vector2(50, 50);
     public float minDistance = 10f;
     private Bounds bounds;
 
     public GameObject EnemyHivePrefab;
-    public GameObject EnemyPrefab;
+    public List<GameObject> EnemyPrefab= new List<GameObject>();
 
     private List<GameObject> spawnedGangs= new List<GameObject>();
     private List<GameObject> randomEnemies = new List<GameObject>();
@@ -21,11 +21,9 @@ public class GangGenerator : MonoBehaviour
     private void Start()
     {
         MapBorder();
-        EnemyHivePrefab = Resources.Load<GameObject>("enemy");
-
         EnemyHivePrefab = Resources.Load<GameObject>("EnemyGang");
-        InstantiateEnemyGang(prefabNumber);
-        RandomEnemyChilds(5);
+        InstantiateEnemyGang(GangNumber);
+        RandomEnemyChilds(15);
     }
 
     public void MapBorder()
@@ -75,19 +73,21 @@ public class GangGenerator : MonoBehaviour
         }
     }
 
+   
     public void RandomEnemyChilds(int difficulty)
     {
-        foreach (GameObject go in spawnedGangs)
+        foreach (GameObject gang in spawnedGangs)
         {
-            int enemies = Random.Range(1, difficulty);
-            for (int i = 0; i < enemies; i++)
+            int enemiesCount = Random.Range(1, difficulty);
+            for (int i = 0; i < enemiesCount; i++)
             {
-                // Yeni enemy objesi oluþtur
-                GameObject enemy = Instantiate(EnemyPrefab, go.transform.position, Quaternion.identity, go.transform);
+                if (EnemyPrefab.Count == 0) return; // Eðer liste boþsa hata almamak için çýkýþ yap
 
-                // Düþmaný biraz rastgele konumlandýr (Ayný noktaya üst üste spawn olmamasý için)
+                GameObject randomEnemy = EnemyPrefab[Random.Range(0, EnemyPrefab.Count)];
+                GameObject enemy = Instantiate(randomEnemy, gang.transform.position, Quaternion.identity, gang.transform);
                 enemy.transform.position += (Vector3)Random.insideUnitCircle * 2f;
             }
         }
     }
+
 }
