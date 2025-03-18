@@ -5,6 +5,7 @@ using UnityEngine.UIElements;
 
 public class GangGenerator : MonoBehaviour
 {
+   
     public int GangNumber = 5;
     public Vector2 center = Vector2.zero;
     public Vector2 mapSize = new Vector2(50, 50);
@@ -13,15 +14,15 @@ public class GangGenerator : MonoBehaviour
 
     public GameObject EnemyHivePrefab;
     public List<GameObject> EnemyPrefab= new List<GameObject>();
-
     private List<GameObject> spawnedGangs= new List<GameObject>();
     private List<GameObject> randomEnemies = new List<GameObject>();
+  
+
 
     //Instantiate(prefab, position, rotation, parent);
     private void Start()
     {
         MapBorder();
-        EnemyHivePrefab = Resources.Load<GameObject>("EnemyGang");
         InstantiateEnemyGang(GangNumber);
         RandomEnemyChilds(15);
     }
@@ -90,4 +91,5 @@ public class GangGenerator : MonoBehaviour
         }
     }
 
+    
 }

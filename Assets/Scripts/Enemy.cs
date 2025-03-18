@@ -2,6 +2,7 @@ using UnityEngine;
 
 public class Enemy : MonoBehaviour
 {
+    
     MoveEnemy moveEnemy;
     EnemyStats stats;
     Health health; 
@@ -12,8 +13,7 @@ public class Enemy : MonoBehaviour
     public Vector2 TargetLocation;
 
     public bool isPlayerIn;
-    public int priority = 0;
-    //statsa taþýnacak deðerler var 
+  
 
     void Start()
     {
@@ -21,8 +21,6 @@ public class Enemy : MonoBehaviour
         health = GetComponent<Health>(); 
         moveEnemy = GetComponent<MoveEnemy>();
         stats = GetComponent<EnemyStats>();
-
-        stats.Speed = 1;
         health.SetCurrentHealth(20); 
     }
 

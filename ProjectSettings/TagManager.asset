@@ -8,6 +8,7 @@ TagManager:
   - Enemy
   - enemyArea
   - ally
+  - Gang
   layers:
   - Default
   - TransparentFX

@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 3014381922534350712}
   m_Layer: 0
   m_Name: EnemyGang
-  m_TagString: Untagged
+  m_TagString: Gang
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -42,7 +42,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 394608454547955140, guid: 45468c47b7b13b8498d7976ae34afaf5, type: 3}
       propertyPath: m_Name
-      value: E_Hive
+      value: Hive
       objectReference: {fileID: 0}
     - target: {fileID: 4647377728276113733, guid: 45468c47b7b13b8498d7976ae34afaf5, type: 3}
       propertyPath: m_LocalPosition.x

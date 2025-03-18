@@ -6,6 +6,8 @@ public abstract class Stats : MonoBehaviour
 {
     //scriptableobaject
     //interface
+    public Features features;
+
     [SerializeField] private float damage;
     [SerializeField] private float attackRange;
     [SerializeField] private float speed;
@@ -16,6 +18,10 @@ public abstract class Stats : MonoBehaviour
     [SerializeField] public Vector2 HiveLocation;
     //
 
+    private void Start()
+    {
+        AssignStats();
+    }
     public float AttackRange { get=> attackRange; set => attackRange = value; }
     public float Damage { get => damage; set => damage = value; }
     public float Speed { get => speed; set => speed = value; }
@@ -30,6 +36,18 @@ public abstract class Stats : MonoBehaviour
     public void ChangeAttackRange(float value)
     {
         AttackRange = value;
+    }
+
+    public void AssignStats() 
+    {
+
+        damage = features.Damage;
+        speed=features.Speed;
+        attackRange = features.attackRange;
+        priority= features.priority;
+        armor=features.armor;
+
+    
     }
        
 }
