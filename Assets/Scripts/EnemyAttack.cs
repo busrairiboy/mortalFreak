@@ -1,49 +1,71 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
-public class EnemyAttack : MonoBehaviour
+public class EnemyAttack : Attack
 {
-    EnemyStats stats;
-    public Transform AttackPoint;
-    public LayerMask Playerlayer;
-    public float AttackRange;
-    public float AttackDamage;
-    public bool isAttacking;
-  
+    
+    private EnemyStats stats;
+    public LayerMask playerLayer;
+    private bool isAttacking;
+
+    protected override void Awake()
+    {
+        base.Awake(); 
+    }
 
     private void Start()
     {
-        stats = GetComponent<EnemyStats>(); 
+        stats = GetComponent<EnemyStats>();
+
+        if (stats != null)
+        {
+            attackRange = stats.AttackRange;
+            damage = stats.Damage;
+        }
     }
+
     private void Update()
     {
-        AttackDamage = stats.Damage;
-        AttackRange = stats.AttackRange;
-    }
-
-    public IEnumerator Attack()
-    {
-        if (isAttacking) yield break;
-        
-        isAttacking = true;
-        yield return new WaitForSeconds(1.5f);
-        
-        Collider2D[] hitEnemies = Physics2D.OverlapCircleAll(AttackPoint.position, AttackRange, Playerlayer);
-        foreach (Collider2D enemy in hitEnemies)
+        if (stats != null)
         {
-           enemy.GetComponent<Health>().TakeDamage(AttackDamage);
-               
+            
+            damage = stats.Damage;
+            attackRange = stats.AttackRange;
         }
-        isAttacking = false;
+    }
+
+
+    public override void PerformAttack()
+    {
+        if (!isAttacking)
+        {
+            StartCoroutine(AttackCoroutine());
+        }
+    }
+
+    private IEnumerator AttackCoroutine()
+    {
+        isAttacking = true;
+
         yield return new WaitForSeconds(1.5f);
 
-    }
-    private void OnDrawGizmosSelected()
-    {
-        if (AttackPoint == null)
-            return;
+        Collider2D[] hitPlayers = Physics2D.OverlapCircleAll(attackPoint.position, attackRange, playerLayer);
+        foreach (Collider2D player in hitPlayers)
+        {
+            Health health = player.GetComponent<Health>();
+            if (health != null)
+            {
+                health.TakeDamage(damage);
+            }
+        }
 
-        Gizmos.DrawWireSphere(AttackPoint.position, AttackRange);
+        yield return new WaitForSeconds(1.5f);
+        isAttacking = false;
+    }
+
+
+    protected override void OnDrawGizmosSelected()
+    {
+        base.OnDrawGizmosSelected();
     }
 }
