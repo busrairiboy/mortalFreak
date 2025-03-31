@@ -11,10 +11,10 @@ public class Equipment : MonoBehaviour
     {
         stats = GetComponent<PlayerStats>();
        
-        stats.ChangeDamage(5f);
-        stats.TotalDamage = stats.Damage;
-        stats.AttackRange = 1.3f;
-        stats.Speed = 3;
+       // stats.ChangeDamage(5f);
+       // stats.TotalDamage = stats.Damage;
+       // stats.AttackRange = 1.3f;
+        //stats.Speed = 3;
     }
    
     public void EquipWeapon(float weaponDamage)//maðaza ile ayarlanacak
