@@ -28,7 +28,7 @@ public class GameProgressionManager : MonoBehaviour
     public List<GameObject> minions = new List<GameObject>();
 
     public int playerXP;
-    public Features level_1_Warrior;
+    public Features level_1_Warrior;//stats scriptlerinde tut prefableri de öyle ayarla
     public Features level_2_Warrior;
     public Features level_3_Warrior;
     public Features level_2_Tank;
@@ -108,12 +108,12 @@ public class GameProgressionManager : MonoBehaviour
         Stats stats = go.GetComponent<Stats>();
         int goPriority = stats.priority;
         
-        if (levelStatus == 2) 
+        if (levelStatus == 2) //sadece statslarda olan bool level 2 veya level 3 deðiþkenlerini switchlicez //
         {
             if (goPriority == 1) 
             { 
-                stats.features= level_2_Warrior;
-                stats.AssignStats();
+               // stats.features= level_2_Warrior;
+                //stats.AssignStats();
             }
 
           

@@ -6,7 +6,13 @@ public abstract class Stats : MonoBehaviour
 {
     //scriptableobaject
     //interface
-    public Features features;
+
+    [SerializeField] bool isLevel2=false;
+    [SerializeField] bool isLevel3=false;
+
+    public Features features_level1;
+    public Features features_level2;
+    public Features features_level3;
 
     [SerializeField] private float damage;
     [SerializeField] private float attackRange;
@@ -20,7 +26,11 @@ public abstract class Stats : MonoBehaviour
 
     private void Start()
     {
-        AssignStats();
+        AssignStats(features_level1);
+    }
+    private void Update()
+    {
+        ChangeLevel();//updatesiz event ile yapmanýn yolunu bul
     }
     public float AttackRange { get=> attackRange; set => attackRange = value; }
     public float Damage { get => damage; set => damage = value; }
@@ -38,7 +48,7 @@ public abstract class Stats : MonoBehaviour
         AttackRange = value;
     }
 
-    public void AssignStats() 
+    public void AssignStats(Features features) 
     {
 
         damage = features.Damage;
@@ -47,6 +57,14 @@ public abstract class Stats : MonoBehaviour
         priority= features.priority;
         armor=features.armor;
 
+    
+    }
+    public void ChangeLevel() 
+    {
+        if (isLevel2)
+        { AssignStats(features_level2); }
+        else if (isLevel3) 
+        { AssignStats(features_level3); }
     
     }
        

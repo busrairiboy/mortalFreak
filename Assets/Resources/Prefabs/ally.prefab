@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 7800299350313334431}
   - component: {fileID: 1960041200394711359}
   - component: {fileID: 5356447484443289176}
+  - component: {fileID: 3279217037434387931}
   m_Layer: 7
   m_Name: ally
   m_TagString: ally
@@ -49,6 +50,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6c0a60791e42902498d23c7db7e03dd2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isLevel2: 0
+  isLevel3: 0
+  features_level1: {fileID: 0}
+  features_level2: {fileID: 0}
+  features_level3: {fileID: 0}
   damage: 0
   attackRange: 0
   speed: 2.5
@@ -69,7 +75,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f626bb11f1c7f6c4fabb6cb4971060c8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 2.5
+  speed: 1
   TargetLocation: {x: 0, y: 0}
 --- !u!114 &8876439849069147348
 MonoBehaviour:
@@ -127,12 +133,12 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 228603328, guid: 1c3479b00e765764fb88ebb521f858db, type: 3}
+  m_Sprite: {fileID: 21300000, guid: a4253cafb43991c49a0df2b48494e4e5, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 1.625, y: 2}
+  m_Size: {x: 10.8, y: 10.8}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -200,3 +206,24 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
+--- !u!95 &3279217037434387931
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8514198311855514737}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 250ddb07832b640418a74013762e0be9, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
