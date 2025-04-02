@@ -1,30 +1,42 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class Attack : MonoBehaviour
 {
-    private bool isAttackOn = false;
-    private float Damage ;
-    
-    public void attack(bool isAttackOn,float damage)
+   
+    protected bool isAttackOn = false;
+    protected float damage = 10f;
+
+   
+    public Transform attackPoint;
+    public float attackRange = 1f;
+
+    protected virtual void Awake()
     {
-        this.isAttackOn = isAttackOn;
-        this.Damage = damage;
+        
+        if (attackPoint == null)
+        {
+            attackPoint = transform;
+        }
     }
 
-    private void OnTriggerEnter2D(Collider2D other)
+    public virtual void InitializeAttack(bool isAttackOn, float damage)
     {
-        if (isAttackOn)
-        {
-            if (other.CompareTag("enemy"))
-            {
-                Debug.Log("enemy"+Damage);
-            }
-        }
-      
+        this.isAttackOn = isAttackOn;
+        this.damage = damage;
     }
+
     
-    //
+    public virtual void PerformAttack()
+    {
+        Debug.Log(" attack  " + damage);
+    }
+
+    
+    protected virtual void OnDrawGizmosSelected()
+    {
+        if (attackPoint == null) return;
+
+        Gizmos.color = Color.red;
+        Gizmos.DrawWireSphere(attackPoint.position, attackRange);
+    }
 }

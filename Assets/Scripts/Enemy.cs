@@ -1,27 +1,30 @@
+using System.Collections;
 using UnityEngine;
 
 public class Enemy : MonoBehaviour
 {
-    
-    MoveEnemy moveEnemy;
-    EnemyStats stats;
-    Health health; 
-    EnemyAttack attack;
+    private MoveEnemy moveEnemy;
+    private EnemyStats stats;
+    private Health health;
+    private EnemyAttack attack;
 
     public Vector2 HiveLocation;
     public Vector2 AttackLocation;
     public Vector2 TargetLocation;
-
     public bool isPlayerIn;
-  
+    public int priority = 0;
 
     void Start()
     {
+
         attack = GetComponent<EnemyAttack>();
-        health = GetComponent<Health>(); 
+        health = GetComponent<Health>();
         moveEnemy = GetComponent<MoveEnemy>();
         stats = GetComponent<EnemyStats>();
-        health.SetCurrentHealth(20); 
+
+
+        stats.Speed = 1;
+        health.SetCurrentHealth(20);
     }
 
     void Update()
@@ -32,7 +35,7 @@ public class Enemy : MonoBehaviour
             moveToTarget();
             AttackToPlayer();
         }
-        else if (!isPlayerIn)
+        else
         {
             HiveLocation = stats.HiveLocation;
             TargetLocation = HiveLocation;
@@ -42,7 +45,8 @@ public class Enemy : MonoBehaviour
 
     public void AttackToPlayer()
     {
-        StartCoroutine(attack.Attack());
+        
+        attack.PerformAttack();
     }
 
     public void moveToTarget()
@@ -51,23 +55,17 @@ public class Enemy : MonoBehaviour
         moveEnemy.speed = stats.Speed;
     }
 
-   
     public void TakeDamage(float damage)
     {
-        health.TakeDamage(damage); 
-
+        health.TakeDamage(damage);
         if (health.GetCurrentHealth() <= 0)
         {
-            Destroy(gameObject); 
+            Destroy(gameObject);
         }
     }
 
-   //enemy.healthe eriþemedðimden getter kullanýldý.
     public float GetHealth()
     {
         return health.GetCurrentHealth();
     }
 }
-
-
-

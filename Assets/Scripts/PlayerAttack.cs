@@ -1,37 +1,38 @@
-
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-public class PlayerAttack : MonoBehaviour
+
+public class PlayerAttack : Attack
 {
     public Joystick joystickAttack;
     PlayerStats stats;
-    public Transform AttackPoint;
-    public LayerMask Enemylayer;
-    public float AttackRange;
-    public float AttackDamage;
+    public LayerMask enemyLayer;
+
     private void Start()
     {
         stats = GetComponent<PlayerStats>();
+
+        attackRange = stats.AttackRange;
     }
+
     private void Update()
     {
-        AttackDamage = stats.TotalDamage;
-        AttackRange = stats.AttackRange;
+       
+        damage = stats.TotalDamage;
+        attackRange = stats.AttackRange;
     }
-    public void Attack()
-    {
 
-        Collider2D[] hitEnemies = Physics2D.OverlapCircleAll(AttackPoint.position, AttackRange, Enemylayer);
+    public override void PerformAttack()
+    {
+        Collider2D[] hitEnemies = Physics2D.OverlapCircleAll(attackPoint.position, attackRange, enemyLayer);
         foreach (Collider2D enemy in hitEnemies)
         {
-            enemy.GetComponent<Health>().TakeDamage(AttackDamage);
+            enemy.GetComponent<Health>().TakeDamage(damage);
         }
     }
-    private void OnDrawGizmosSelected()
+
+    protected override void OnDrawGizmosSelected()
     {
-        if (AttackPoint == null)
-            return;
-        Gizmos.DrawWireSphere(AttackPoint.position, AttackRange);
+        base.OnDrawGizmosSelected();
     }
 }
