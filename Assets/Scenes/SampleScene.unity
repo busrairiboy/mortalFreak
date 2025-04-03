@@ -147285,7 +147285,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &818608949
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -149955,13 +149955,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3c57cadc55a5aa74a9e9d305cd615637, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  attackPoint: {fileID: 0}
+  attackRange: 1
   joystickAttack: {fileID: 0}
-  AttackPoint: {fileID: 0}
-  Enemylayer:
+  enemyLayer:
     serializedVersion: 2
     m_Bits: 0
-  AttackRange: 0
-  AttackDamage: 0
 --- !u!114 &1802727468
 MonoBehaviour:
   m_ObjectHideFlags: 0
