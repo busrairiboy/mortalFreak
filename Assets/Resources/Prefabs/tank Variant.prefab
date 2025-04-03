@@ -80,13 +80,17 @@ PrefabInstance:
       propertyPath: priority
       value: 5
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 1051725569423410906, guid: f96682d6813c4a540b9e9a301f45ebcd, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 5762688337102911111, guid: f96682d6813c4a540b9e9a301f45ebcd, type: 3}
-      insertIndex: 3
+      insertIndex: 2
       addedObject: {fileID: 4171466246605499482}
+    - targetCorrespondingSourceObject: {fileID: 5762688337102911111, guid: f96682d6813c4a540b9e9a301f45ebcd, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 3548405989073881281}
   m_SourcePrefab: {fileID: 100100000, guid: f96682d6813c4a540b9e9a301f45ebcd, type: 3}
 --- !u!1 &8135375942780213910 stripped
 GameObject:
@@ -106,3 +110,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 200
+--- !u!114 &3548405989073881281
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8135375942780213910}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fb739039a720dce4fa0a182459930bc6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  attackPoint: {fileID: 0}
+  attackRange: 1
+  playerLayer:
+    serializedVersion: 2
+    m_Bits: 0

@@ -76,12 +76,13 @@ PrefabInstance:
       propertyPath: priority
       value: 4
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 1051725569423410906, guid: f96682d6813c4a540b9e9a301f45ebcd, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 5762688337102911111, guid: f96682d6813c4a540b9e9a301f45ebcd, type: 3}
-      insertIndex: 3
+      insertIndex: 2
       addedObject: {fileID: 6127638994025865203}
   m_SourcePrefab: {fileID: 100100000, guid: f96682d6813c4a540b9e9a301f45ebcd, type: 3}
 --- !u!1 &6188080035697853900 stripped

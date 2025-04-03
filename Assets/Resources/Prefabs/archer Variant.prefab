@@ -54,11 +54,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2834924137183630058, guid: f96682d6813c4a540b9e9a301f45ebcd, type: 3}
       propertyPath: m_Radius
-      value: 0.56822586
+      value: 1.1543232
       objectReference: {fileID: 0}
     - target: {fileID: 2834924137183630058, guid: f96682d6813c4a540b9e9a301f45ebcd, type: 3}
       propertyPath: m_Offset.x
       value: 0.06822586
+      objectReference: {fileID: 0}
+    - target: {fileID: 2834924137183630058, guid: f96682d6813c4a540b9e9a301f45ebcd, type: 3}
+      propertyPath: m_Offset.y
+      value: 0.48164606
       objectReference: {fileID: 0}
     - target: {fileID: 2834924137183630058, guid: f96682d6813c4a540b9e9a301f45ebcd, type: 3}
       propertyPath: m_IsTrigger
@@ -84,13 +88,17 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 1051725569423410906, guid: f96682d6813c4a540b9e9a301f45ebcd, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 5762688337102911111, guid: f96682d6813c4a540b9e9a301f45ebcd, type: 3}
       insertIndex: 2
       addedObject: {fileID: 752131967897854165}
+    - targetCorrespondingSourceObject: {fileID: 5762688337102911111, guid: f96682d6813c4a540b9e9a301f45ebcd, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 7394394231254234533}
   m_SourcePrefab: {fileID: 100100000, guid: f96682d6813c4a540b9e9a301f45ebcd, type: 3}
 --- !u!1 &2690549346444228148 stripped
 GameObject:
@@ -110,3 +118,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 100
+--- !u!114 &7394394231254234533
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2690549346444228148}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fb739039a720dce4fa0a182459930bc6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  attackPoint: {fileID: 0}
+  attackRange: 1
+  playerLayer:
+    serializedVersion: 2
+    m_Bits: 0

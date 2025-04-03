@@ -377,7 +377,6 @@ GameObject:
   m_Component:
   - component: {fileID: 2007974231635383557}
   - component: {fileID: 8993935307635128800}
-  - component: {fileID: 1051725569423410906}
   - component: {fileID: 2834924137183630058}
   - component: {fileID: 7257253556589989806}
   - component: {fileID: -583416580265661628}
@@ -401,7 +400,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.5, y: 0.5, z: 1}
+  m_LocalScale: {x: 0.3, y: 0.3, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 2319996606934313995}
@@ -421,25 +420,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxHealth: 100
---- !u!114 &1051725569423410906
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5762688337102911111}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8ec4429128a0dab4a9f8d803915d3ad2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  AttackPoint: {fileID: 2319996606934313995}
-  Playerlayer:
-    serializedVersion: 2
-    m_Bits: 64
-  AttackRange: 0
-  AttackDamage: 0
-  isAttacking: 0
 --- !u!58 &2834924137183630058
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -472,9 +452,9 @@ CircleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: 0, y: 0.7886494}
   serializedVersion: 2
-  m_Radius: 0.5
+  m_Radius: 1.4388683
 --- !u!114 &7257253556589989806
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -530,6 +510,7 @@ MonoBehaviour:
   AttackLocation: {x: 0, y: 0}
   TargetLocation: {x: 0, y: 0}
   isPlayerIn: 0
+  priority: 0
 --- !u!50 &-866202025637819117
 Rigidbody2D:
   serializedVersion: 4

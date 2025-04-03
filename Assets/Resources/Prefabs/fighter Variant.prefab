@@ -12,6 +12,18 @@ PrefabInstance:
       propertyPath: priority
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: -583416580265661628, guid: f96682d6813c4a540b9e9a301f45ebcd, type: 3}
+      propertyPath: features_level1
+      value: 
+      objectReference: {fileID: 11400000, guid: 10114ae088b6f0c4891263b5983d08b3, type: 2}
+    - target: {fileID: -583416580265661628, guid: f96682d6813c4a540b9e9a301f45ebcd, type: 3}
+      propertyPath: features_level2
+      value: 
+      objectReference: {fileID: 11400000, guid: bc5cbed996b1711468f0ffbf470d11ec, type: 2}
+    - target: {fileID: -583416580265661628, guid: f96682d6813c4a540b9e9a301f45ebcd, type: 3}
+      propertyPath: features_level3
+      value: 
+      objectReference: {fileID: 11400000, guid: ea2569e60cebab844b6b7cbf62ec3f44, type: 2}
     - target: {fileID: 2007974231635383557, guid: f96682d6813c4a540b9e9a301f45ebcd, type: 3}
       propertyPath: m_LocalPosition.x
       value: 1.26
@@ -84,13 +96,17 @@ PrefabInstance:
       propertyPath: priority
       value: 3
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 1051725569423410906, guid: f96682d6813c4a540b9e9a301f45ebcd, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 5762688337102911111, guid: f96682d6813c4a540b9e9a301f45ebcd, type: 3}
       insertIndex: 2
       addedObject: {fileID: 7809478578143406408}
+    - targetCorrespondingSourceObject: {fileID: 5762688337102911111, guid: f96682d6813c4a540b9e9a301f45ebcd, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 6307474994644815681}
   m_SourcePrefab: {fileID: 100100000, guid: f96682d6813c4a540b9e9a301f45ebcd, type: 3}
 --- !u!1 &5735041023803476275 stripped
 GameObject:
@@ -110,3 +126,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 100
+--- !u!114 &6307474994644815681
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5735041023803476275}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fb739039a720dce4fa0a182459930bc6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  attackPoint: {fileID: 0}
+  attackRange: 1
+  playerLayer:
+    serializedVersion: 2
+    m_Bits: 0
