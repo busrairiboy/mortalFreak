@@ -148247,6 +148247,11 @@ PrefabInstance:
       insertIndex: 3
       addedObject: {fileID: 1029462546}
   m_SourcePrefab: {fileID: 100100000, guid: f96682d6813c4a540b9e9a301f45ebcd, type: 3}
+--- !u!1 &1640452272 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7312843342471648071, guid: f96682d6813c4a540b9e9a301f45ebcd, type: 3}
+  m_PrefabInstance: {fileID: 1593340236}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1657999787
 GameObject:
   m_ObjectHideFlags: 0
@@ -150065,6 +150070,7 @@ GameObject:
   - component: {fileID: 1802727469}
   - component: {fileID: 1802727468}
   - component: {fileID: 1802727467}
+  - component: {fileID: 1802727475}
   - component: {fileID: 1802727466}
   - component: {fileID: 1802727465}
   - component: {fileID: 1802727473}
@@ -150314,6 +150320,23 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &1802727475
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1802727463}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2aef53041c22026459960ae60212e70b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  projectilePrefab: {fileID: 1640452272}
+  firePoint: {fileID: 1802727472}
+  projectileSpeed: 5
+  projectileLifeTime: 3
+  enemyTag: Enemy
 --- !u!1 &1821824575
 GameObject:
   m_ObjectHideFlags: 0
